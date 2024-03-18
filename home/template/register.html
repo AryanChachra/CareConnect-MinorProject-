@@ -30,7 +30,25 @@
       }
     </style>
   </head>
-  <body>
+  <body>  
+    <center>
+      <div class="alert alert-warning alert-dismissible fade show" style="width: 400px; height: 20px;" role="alert">
+      
+       <strong>
+        {% if messages %}
+        <ul class="messages">
+        {% for message in messages %}
+        {{ message }}
+        {% endfor %}
+        </ul> 
+        {% endif %}
+   
+       </strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+       </div>
+      
+    </center>
+    
     <div class="container my-3">
       <div class="row my-1 p-2">
         <div class="col">

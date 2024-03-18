@@ -5,6 +5,7 @@ from django.core.mail import send_mail
 from django.conf import settings
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
+from django.contrib import messages
 
 # index page
 def index(request):
@@ -18,10 +19,12 @@ def enter(request):
         password=data.get('password')
         user=authenticate(username=username,password=password)
         if user is None:
-            print("invailid username and password")
+            messages.error(request, "Invalid username and password")
             return redirect('/register/')
         else:
+
             login(request,user)
+            messages.success(request, "Login successfully")
             return redirect('/index/')
     
     return render(request,'Login.html')
