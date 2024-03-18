@@ -29,7 +29,7 @@ def enter(request):
 # bedbooking page
 
 def bedbooking(request):
-    return render(request,'bedBooking.html')
+    return render(request,'successfully.html')
 
 # Fillform page
 
@@ -134,7 +134,6 @@ def fillform(request,id):
             patient_gender=pgender,
             address=address,
             mobile_number=mnumber,
-            Emargency_number=emergancy,
             current_medication=currentmedications,
             allergies=allergies,
             past_surgeries=pastsurgeries,
