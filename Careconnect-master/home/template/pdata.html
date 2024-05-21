@@ -1,0 +1,391 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CareConnect</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <style>
+      .glass {
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.1),
+          rgba(255, 255, 255, 0)
+        );
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-radius: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+      }
+      .btn {
+        width: 120px;
+        font-weight: 700;
+      }
+      .btn:hover {
+        /* transform: translateY(-10px); */
+
+        transition-timing-function: ease-in-out;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <center>
+      <div class="alert alert-warning alert-dismissible fade show" style="width: 400px; height: 20px;" role="alert">
+      
+       <strong>
+        {% if messages %}
+        <ul class="messages">
+        {% for message in messages %}
+        {{ message }}
+        {% endfor %}
+        </ul> 
+        {% endif %}
+   
+       </strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+       </div>
+      
+    </center> -->
+
+    <div class="container my-3">
+      <div class="row my-1 p-2">
+        <div class="col">
+          <img
+            src="{% static 'images/0019b4ca-3b9d-422a-b123-113ed453ccc3.png'%}"
+            class="img-fluid"
+            alt=""
+          />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="card glass">
+            <div class="card-body">
+              <form class="row g-3" method="get">
+                {% csrf_token %} 
+                {% for i in data %}
+                <div class="col-md-6">
+                  <label for="inputEmail4" class="form-labe">Hospital Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    value="{{i.Hospital_name}}"
+                    name="fullname"
+                    id="inputEmail4"
+                    required
+                  />
+                </div>
+                <div class="col-md-5">
+                  <label for="inputPassword4" class="form-label"
+                    >Bed_id</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    value="{{i.Bed_id}}"
+                    name="fathersname"
+                    id="inputPassword4"
+                    required
+                  />
+                </div>
+                <div class="col-md-6">
+                    <label for="inputEmail4" class="form-labe">Ward Number</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      value="{{i.Ward_number}}"
+                      name="fullname"
+                      id="inputEmail4"
+                      required
+                    />
+                  </div>
+                  <div class="col-md-6">
+                    <label for="inputEmail4" class="form-labe">Room Number</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      value="{{i.Room_number}}"
+                      name="fullname"
+                      id="inputEmail4"
+                      required
+                    />
+                  </div>
+                  <div class="col-md-6">
+                    <label for="inputEmail4" class="form-labe">Symtoms</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      value="{{i.Disease}}"
+                      name="fullname"
+                      id="inputEmail4"
+                      required
+                    />
+                  </div>
+                  <div class="col-md-6">
+                    <label for="inputEmail4" class="form-labe">Bed Type</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      value="{{i.Bed_type}}"
+                      name="fullname"
+                      id="inputEmail4"
+                      required
+                    />
+                  </div>
+                  <div class="col-md-6">
+                    <label for="inputEmail4" class="form-labe">Patient Name</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      value="{{i.patient_name}}"
+                      name="fullname"
+                      id="inputEmail4"
+                      required
+                    />
+                  </div>
+                  <div class="col-md-6">
+                    <label for="inputEmail4" class="form-labe">Patient Gender</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      value="{{i.patient_gender}}"
+                      name="fullname"
+                      id="inputEmail4"
+                      required
+                    />
+                  </div>
+                  <div class="col-md-6">
+                    <label for="inputEmail4" class="form-labe">Patient Age</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      value="{{i.patient_age}}"
+                      name="fullname"
+                      id="inputEmail4"
+                      required
+                    />
+                  </div>
+                  <div class="col-md-6">
+                    <label for="inputEmail4" class="form-labe">Address</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      value="{{i.address1}}"
+                      name="fullname"
+                      id="inputEmail4"
+                      required
+                    />
+                  </div>
+                  <div class="col-md-6">
+                    <label for="inputEmail4" class="form-labe">Mobile Number</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      value="{{i.mobile_number}}"
+                      name="fullname"
+                      id="inputEmail4"
+                      required
+                    />
+                  </div>
+                  <div class="col-md-6">
+                    <label for="inputEmail4" class="form-labe">Symtoms</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      value="{{i.Disease}}"
+                      name="fullname"
+                      id="inputEmail4"
+                      required
+                    />
+                  </div>
+                  <div class="col-md-6">
+                    <label for="inputEmail4" class="form-labe">Current Medication</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      value="{{i.current_medication}}"
+                      name="fullname"
+                      id="inputEmail4"
+                      required
+                    />
+                  </div>
+                  <div class="col-md-6">
+                    <label for="inputEmail4" class="form-labe">Allergies</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      value="{{i.allergies}}"
+                      name="fullname"
+                      id="inputEmail4"
+                      required
+                    />
+                  </div><div class="col-md-6">
+                    <label for="inputEmail4" class="form-labe">Past Surgeries</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      value="{{i.past_surgeries}}"
+                      name="fullname"
+                      id="inputEmail4"
+                      required
+                    />
+                  </div>
+                  <div class="col-md-6">
+                    <label for="inputEmail4" class="form-labe">Insurance Details</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      value="{{i.insurance_policy}}"
+                      name="fullname"
+                      id="inputEmail4"
+                      required
+                    />
+                  </div>
+                  <div class="col-md-6">
+                    <label for="inputEmail4" class="form-labe">Policy Number</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      value="{{i.Policy_number}}"
+                      name="fullname"
+                      id="inputEmail4"
+                      required
+                    />
+                  </div>
+                  <div class="col-md-6">
+                    <label for="inputEmail4" class="form-labe">Special Request</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      value="{{i.special_request}}"
+                      name="fullname"
+                      id="inputEmail4"
+                      required
+                    />
+                  </div>
+
+
+
+
+                <!-- <div class="col-md-12">
+                  <label for="inputPassword4" class="form-label" 
+                    >Gender : </label
+                  >
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="option1">
+                    <label class="form-check-label" for="inlineRadio1">Male</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="gender" id="inlineRadio2" value="option2">
+                    <label class="form-check-label" for="inlineRadio2">Female</label>
+                  </div>
+                </div> -->
+                <!-- <div class="col-md-6">
+                  <label for="inputEmail4" class="form-label">Email</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    value="{{i.email}}"
+                    name="email"
+                    id="inputEmail4"
+                    required
+                  />
+                </div>
+                <div class="col-md-6">
+                  <label for="inputPassword4" class="form-label"
+                    >Password</label
+                  >
+                  <input
+                    type="password"
+                    value="{{i.code}}"
+                    class="form-control"
+                    name="password"
+                    id="inputPassword4"
+                    required
+                  />
+                </div>
+                <div class="col-12">
+                  <label for="inputAddress" class="form-label"
+                    >Address Line 1</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputAddress"
+                    name="address1"
+                    value="{{i.address1}}"
+                    required
+                  />
+                </div>
+                <div class="col-12">
+                  <label for="inputAddress2" class="form-label"
+                    >Address Line 2</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="address2"
+                    id="inputAddress2"
+                    value="{{i.address2}}"
+                  />
+                </div>
+                <div class="col-md-6">
+                  <label for="inputCity" class="form-label">City</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="city"
+                    value="{{i.city}}"
+                    id="inputCity"
+                  />
+                </div>
+                <div class="col-md-4">
+                  <label for="inputState" class="form-label">State</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="zipcode"
+                    value="{{i.state}}"
+                    id="inputZip"
+                  />
+                </div>
+
+                <div class="col-md-4">
+                  <label for="inputZip" class="form-label">Zip Code</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="zipcode"
+                    id="inputZip"
+                    value="{{i.zip}}"
+                  />
+                </div> -->
+
+                <!-- <center><div class="col-12">
+                  <a href="/remove/{{i.id}}/" class="btn btn-primary">Log Out</a>
+                </div></center> -->
+                {% endfor %}
+              </form>
+              <br>
+<center>              <a href="/information/"><button class="btn btn-primary">View All Patients</button></a>
+</center>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

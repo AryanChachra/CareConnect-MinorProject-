@@ -1,0 +1,210 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CareConnect</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />\
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+
+    <style>
+      .glass {
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.1),
+          rgba(255, 255, 255, 0)
+        );
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-radius: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+      }
+    </style>
+  </head>
+  <body>  
+    <!-- <center>
+      <div class="alert alert-warning alert-dismissible fade show" style="width: 400px; height: 20px;" role="alert">
+      
+       <strong>
+        {% if messages %}
+        <ul class="messages">
+        {% for message in messages %}
+        {{ message }}
+        {% endfor %}
+        </ul> 
+        {% endif %}
+   
+       </strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+       </div>
+      
+    </center> -->
+    
+    <div class="container my-3">
+      <div class="row my-1 p-2">
+        <div class="col">
+          <img
+            src="{% static 'images/0019b4ca-3b9d-422a-b123-113ed453ccc3.png'%}"
+            class="img-fluid"
+            alt=""
+          />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="card glass">
+            <div class="card-body">
+              <form class="row g-3" method="post">
+                {% csrf_token %}
+                <div class="col-md-6">
+                  <label for="inputEmail4" class="form-label">Full Name</label>
+                  <input type="text" class="form-control" name="fullname" id="inputEmail4" required />
+                </div>
+                <div class="col-md-6">
+                  <label for="inputPassword4" class="form-label"
+                    >Father's Name</label
+                  >
+                  <input type="text" class="form-control" name="fathersname" id="inputPassword4" required/>
+                </div>
+                <div class="col-md-12">
+                  <label for="inputPassword4" class="form-label" 
+                    >Gender : </label
+                  >
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="option1">
+                    <label class="form-check-label" for="inlineRadio1">Male</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="gender" id="inlineRadio2" value="option2">
+                    <label class="form-check-label" for="inlineRadio2">Female</label>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <label for="inputEmail4" class="form-label">Email</label>
+                  <input type="email" class="form-control" name="email" id="inputEmail4" required />
+                </div>
+                <div class="col-md-6">
+                  <label for="inputPassword4" class="form-label"
+                    >Password</label
+                  >
+                  <input
+                    type="password"
+                    class="form-control"
+                    name="password"
+                    id="inputPassword4"
+                    required
+                  />
+                </div>
+                <div class="col-12">
+                  <label for="inputAddress" class="form-label">Address Line 1</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputAddress"
+                    name="address1"
+                    placeholder="1234 Main St"
+                    required
+                  />
+                </div>
+                <div class="col-12">
+                  <label for="inputAddress2" class="form-label"
+                    >Address Line 2</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="address2"
+                    id="inputAddress2"
+                    placeholder="Apartment, studio, or floor"
+                  />
+                </div>
+                <div class="col-md-6">
+                  <label for="inputCity" class="form-label">City</label>
+                  <input type="text" class="form-control" name="city" id="inputCity" />
+                </div>
+                <div class="col-md-4">
+                  <label for="inputState" class="form-label">State</label>
+                  <select id="inputState" name="state" class="form-select">
+                    <option selected>Choose...</option>
+                    <option value="Andhra Pradesh">Andhra Pradesh</option>
+                    <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                    <option value="Assam">Assam</option>
+                    <option value="Bihar">Bihar</option>
+                    <option value="Chhattisgarh">Chhattisgarh</option>
+                    <option value="Goa">Goa</option>
+                    <option value="Gujarat">Gujarat</option>
+                    <option value="Haryana">Haryana</option>
+                    <option value="Himachal Pradesh">Himachal Pradesh</option>
+                    <option value="Jharkhand">Jharkhand</option>
+                    <option value="Karnataka">Karnataka</option>
+                    <option value="Kerala">Kerala</option>
+                    <option value="Madhya Pradesh">Madhya Pradesh</option>
+                    <option value="Maharashtra">Maharashtra</option>
+                    <option value="Manipur">Manipur</option>
+                    <option value="Meghalaya">Meghalaya</option>
+                    <option value="Mizoram">Mizoram</option>
+                    <option value="Nagaland">Nagaland</option>
+                    <option value="Odisha">Odisha</option>
+                    <option value="Punjab">Punjab</option>
+                    <option value="Rajasthan">Rajasthan</option>
+                    <option value="Sikkim">Sikkim</option>
+                    <option value="Tamil Nadu">Tamil Nadu</option>
+                    <option value="Telangana">Telangana</option>
+                    <option value="Tripura">Tripura</option>
+                    <option value="Uttar Pradesh">Uttar Pradesh</option>
+                    <option value="Uttarakhand">Uttarakhand</option>
+                    <option value="West Bengal">West Bengal</option>
+                    <option value="Andaman and Nicobar Islands">
+                      Andaman and Nicobar Islands
+                    </option>
+                    <option value="Chandigarh">Chandigarh</option>
+                    <option value="Dadra and Nagar Haveli and Daman and Diu">
+                      Dadra and Nagar Haveli and Daman and Diu
+                    </option>
+                    <option value="Lakshadweep">Lakshadweep</option>
+                    <option value="Delhi">Delhi</option>
+                    <option value="Puducherry">Puducherry</option>
+                  </select>
+                </div>
+                <div class="col-md-2">
+                  <label for="inputZip" class="form-label">Zip Code</label>
+                  <input type="text" class="form-control" name="zipcode" id="inputZip" />
+                </div>
+                <div class="col-12">
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="gridCheck"
+                      required
+                    />
+                    <label class="form-check-label" for="gridCheck">
+                      Terms & condition
+                    </label>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <button type="submit" class="btn btn-primary">Sign in</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
