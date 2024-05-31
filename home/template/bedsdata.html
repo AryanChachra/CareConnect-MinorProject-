@@ -1,0 +1,149 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css'%}" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+  <body>
+    <nav class="mb-5 glass-bg">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <nav class="navbar navbar-expand-lg">
+              <div class="container-fluid">
+                <img
+                  src="{% static 'images/0019b4ca-3b9d-422a-b123-113ed453ccc3.png' %}"
+                  class="navbar-brand img-fluid logo-icon"
+                  alt=""
+                />
+                <button
+                  class="navbar-toggler"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#navbarSupportedContent"
+                  aria-controls="navbarSupportedContent"
+                  aria-expanded="false"
+                  aria-label="Toggle navigation"
+                >
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div
+                  class="collapse navbar-collapse"
+                  id="navbarSupportedContent"
+                >
+                  <!-- <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                      <a class="nav-link" href="/index/">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="/index/">ABOUT US</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="/index/">CONTACT US</a>
+                    </li>
+                  </ul> -->
+                  <!-- <form class="d-flex" role="search">
+                    <button class="btn btn-primary" type="submit">
+                      <a href="/login/" style="color: white; text-decoration: none;">LOG OUT</a>
+                    </button>
+                  </form> -->
+                </div>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div class="container my-5">
+      <div class="row">
+        <div class="col">
+          <h1 class="text-center">
+            <span style="font-weight: 400; color: var(--bs-primary)">
+              Patient
+            </span>
+            <span style="font-weight: 200"> Details </span>
+          </h1>
+        </div>
+        <div class="col-lg-3">
+          <form class="d-flex" role="search" method="get">
+            {% csrf_token %}
+            <input
+              class="form-control me-2"
+              type="text"
+              placeholder="Search Hospital"
+              aria-label="Search"
+              name="q"
+            />
+            <button class="btn btn-primary" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- table starts here  -->
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <table class="table table-hover col-20">
+            <tr>
+              <th scope="col">S.no</th>
+              <th scope="col">Hospital Name</th>
+              <th scope="col">Bed Id</th>
+              <th scope="col">Ward Number</th>
+              <th scope="col">Room Number</th>
+              <th scope="col">Disease</th>
+              <th scope="col">Bed Type</th>
+              <th scope="col">Patient Name</th>
+              <th scope="col">Patient Age</th>
+              <th scope="col">Patient Gender</th>
+              <th scope="col">Action</th>
+            </tr>
+            {% for i in data %}
+            <tr>
+              <th scope="row">{{forloop.counter}}</th>
+              <td>{{i.Hospital_name}}</td>
+              <td>{{i.Bed_id}}</td>
+              <td>{{i.Ward_number}}</td>
+              <td>{{i.Room_number}}</td>
+              <td>{{i.Disease}}</td>
+              <td>{{i.Bed_type}}</td>
+              <td>{{i.patient_name}}</td>
+              <td>{{i.patient_age}}</td>
+              <td>{{i.patient_gender}}</td>
+              <td>
+                <a href="/discharge/{{i.id}}/"
+                  ><button class="btn btn-primary">Accept</button></a
+                >
+                <br>
+                <br>
+                <a href="/delete_patient/{{i.id}}/"
+                  ><button class="btn btn-danger">Reject</button></a
+                >
+                
+              </td>
+            </tr>
+            {% endfor %}
+          </table>
+        </div>
+      </div>
+    </div>
+    <!-- table ends here  -->
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

@@ -1,0 +1,133 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CareConnect</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />\
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+
+    <style>
+      .glass {
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.1),
+          rgba(255, 255, 255, 0)
+        );
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-radius: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+      }
+    </style>
+  </head>
+  <body>  
+   
+    
+    <div class="container my-3">
+      <div class="row my-1 p-2">
+        <div class="col">
+          <img
+            src="{% static 'images/0019b4ca-3b9d-422a-b123-113ed453ccc3.png'%}"
+            class="img-fluid"
+            alt=""
+          />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="card glass">
+            <div class="card-body">
+              <form class="row g-3" method="post">
+                {% csrf_token %}
+                <div class="col-md-6">
+                  <label for="inputEmail4" class="form-label">Full Name</label>
+                  <input type="text" class="form-control" value="{{user.full_name}}" name="fullname" id="inputEmail4" required />
+                </div>
+                <div class="col-md-6">
+                  <label for="inputPassword4" class="form-label"
+                    >Father's Name</label
+                  >
+                  <input type="text" value="{{user.fathers_name}}" class="form-control" name="fathersname" id="inputPassword4" required/>
+                </div>
+                </div>
+                <div class="col-md-6">
+                  <label for="inputEmail4" class="form-label">Email</label>
+                  <input type="email" value="{{user.email}}" class="form-control" name="email" id="inputEmail4" required />
+                </div>
+                <div class="col-md-6">
+                  <label for="inputPassword4" class="form-label"
+                    >Password</label
+                  >
+                  <input
+                    value="{{user.code}}"
+                    type="text"
+                    class="form-control"
+                    name="password"
+                    id="inputPassword4"
+                    required
+                  />
+                </div>
+                <div class="col-12">
+                  <label for="inputAddress" class="form-label">Address Line 1</label>
+                  <input
+                    type="text"
+                    value="{{user.address1}}"
+                    class="form-control"
+                    id="inputAddress"
+                    name="address1"
+                    placeholder="1234 Main St"
+                    required
+                  />
+                </div>
+                <div class="col-12">
+                  <label for="inputAddress2" class="form-label"
+                    >Address Line 2</label
+                  >
+                  <input
+                    value="{{user.address2}}"
+                    type="text"
+                    class="form-control"
+                    name="address2"
+                    id="inputAddress2"
+                    placeholder="Apartment, studio, or floor"
+                  />
+                </div>
+                <div class="col-md-6">
+                  <label for="inputCity" class="form-label">City</label>
+                  <input type="text" value="{{user.city}}" class="form-control" name="city" id="inputCity" />
+                </div>
+                <div class="col-md-4">
+                  <label for="inputState" class="form-label">State</label>
+                  <input type="text" class="form-control" value="{{user.state}}" name="pcode" id="inputZip" />
+                    </select>
+                </div>
+                <div class="col-md-2">
+                  <label for="inputZip" class="form-label">Zip Code</label>
+                  <input type="text" class="form-control" value="{{user.zip}}" name="zipcode" id="inputZip" />
+                </div>
+                <div class="col-12">
+                  <button><a href="/index/">Continue to site</a></button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
